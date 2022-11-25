@@ -12,5 +12,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          path: "${{ github.repository }}"
-      - uses: gofrolist/molecule-action@v2
+          path: molecule_test
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pwd
+          ls ..
+          python3 -m pip install --upgrade pip
+          python3 -m pip install molecule molecule-docker
+      - name: Test with molecule
+        run: |
+          molecule test
