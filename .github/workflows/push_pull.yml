@@ -7,7 +7,5 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          path: "/home/runner/work/"
       - name: Molecule
-        uses: gofrolist/molecule-action@v2.3.4
+        uses: robertdebock/molecule-action@4.0.9
