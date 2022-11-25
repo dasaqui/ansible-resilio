@@ -5,7 +5,9 @@ jobs:
   molecule:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: gofrolist/molecule-action@v2
+     - name: Checkout
+        uses: actions/checkout@v2
         with:
-          molecule_working_dir: ansible_resilio
+          path: "${{ github.repository }}"
+      - name: Molecule
+        uses: gofrolist/molecule-action@v2
