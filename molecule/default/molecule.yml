@@ -2,9 +2,14 @@
 dependency:
   name: galaxy
 driver:
-  name: delegated
+  name: docker
 platforms:
-  - name: instance
+  - name: bullseye
+    image: debian:11
+    pre_build_image: false
+  - name: jammy
+    image: ubuntu:22.04
+    pre_build_image: false
 provisioner:
   name: ansible
 verifier:

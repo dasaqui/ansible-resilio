@@ -1,7 +1,7 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This role was created to install resilio sync in my debian/ubuntu computers, but also should be able to deal with raspberry pi 1/zero installation.
 
 Requirements
 ------------
