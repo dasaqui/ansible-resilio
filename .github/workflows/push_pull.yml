@@ -7,4 +7,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: gofrolist/molecule-action@v2
-        molecule_working_dir: '${GITHUB_REPOSITORY}'
+        with:
+          molecule_working_dir: '${GITHUB_REPOSITORY}'
