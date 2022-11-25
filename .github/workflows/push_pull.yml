@@ -6,11 +6,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: test path
-        run: |
-          pwd
-          ls
-          echo ---
-          ls ..
-          echo ---
       - uses: gofrolist/molecule-action@v2
+        molecule_working_dir: '${GITHUB_REPOSITORY}'
