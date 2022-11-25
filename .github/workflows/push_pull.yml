@@ -20,9 +20,10 @@ jobs:
       - name: Install dependencies
         run: |
           pwd
-          ls ..
+          ls
           python3 -m pip install --upgrade pip
           python3 -m pip install molecule molecule-docker
       - name: Test with molecule
         run: |
+          ls
           molecule test
