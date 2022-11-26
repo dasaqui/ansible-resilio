@@ -11,6 +11,7 @@
     dest: "/etc/resilio-sync/config.json"
     owner: root
     group: root
+  become: true
 
 - name: check initial md5sum
   ansible.builtin.stat:
@@ -23,6 +24,7 @@
     state: restarted
     enabled: yes
   when: prev_sum.stat.checksum != new_sum.stat.checksum
+  become: true
 
 - name: config owners for specified folders
   ansible.builtin.file:
@@ -30,3 +32,4 @@
     group: "{{ item.group }}"
     mode: "{{ item.mode }}"
   loop: "{{ folder_owner_and_mode | list}}"
+  become: true

@@ -11,6 +11,7 @@
     append: true
   loop: "{{ user_groups_for_rslsync | list }}"
   when: item in ansible_facts.getent_group
+  become: true
 
 - name: Get list of users
   ansible.builtin.getent:
@@ -23,7 +24,7 @@
     append: true
   loop: "{{ users_in_rslsync_group | list }}"
   when: item in ansible_facts.getent_passwd
-
+  become: true
 
 - include_tasks: config_headless.yml
   when: server_type == "headless"

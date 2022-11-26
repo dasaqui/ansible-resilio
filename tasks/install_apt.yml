@@ -4,18 +4,20 @@
   ansible.builtin.get_url:
     url: https://linux-packages.resilio.com/resilio-sync/key.asc
     dest: /etc/apt/trusted.gpg.d/resilio.asc
+  become: true
 
 - name: Add resilio sync repository
   ansible.builtin.apt_repository:
     repo: deb [signed-by=/etc/apt/trusted.gpg.d/resilio.asc] http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free
     state: present
     filename: resilio-sync
+  become: true
 
 - name: Add ARMv6 architecture
   ansible.builtin.shell:
-    cmd: sudo dpkg --add-architecture armel
-  when: 
-    armv6_cpu
+    cmd: dpkg --add-architecture armel
+  when: armv6_cpu
+  become: true
 
 - name: Install resilio on armv6 cpu
   ansible.builtin.apt:
@@ -23,6 +25,7 @@
     update_cache: true
     state: "{{ final_state }}"
   when: armv6_cpu
+  become: true
 
 - name: Install resilio on non armv6 cpu
   ansible.builtin.apt:
@@ -30,3 +33,4 @@
     update_cache: true
     state: "{{ final_state }}"
   when: not armv6_cpu 
+  become: true
