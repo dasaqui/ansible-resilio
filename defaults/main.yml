@@ -35,7 +35,7 @@ shared_folders: []
 #   ... use as many secrets as you need and remember to remove the brackets above
 
 # Set folders owner
-folder_owner_n_mode: []
+folder_owner_and_mode: []
 # Example.........
 #
 # folder_owner_n_mode:

@@ -3,6 +3,7 @@
 - name: Get list of groups
   ansible.builtin.getent:
     database: group
+    
 - name: Config groups for user rslsync
   ansible.builtin.user:
     name: rslsync
@@ -14,6 +15,7 @@
 - name: Get list of users
   ansible.builtin.getent:
     database: passwd
+
 - name: Config users in rslsync group
   ansible.builtin.user:
     name: "{{ item }}"

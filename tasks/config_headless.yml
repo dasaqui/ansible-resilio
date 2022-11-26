@@ -18,4 +18,4 @@
     path: "{{ item.dir }}"
     group: "{{ item.group }}"
     mode: "{{ item.mode }}"
-  loop: "{{ folder_owner_n_mode | list}}"
+  loop: "{{ folder_owner_and_mode | list}}"
