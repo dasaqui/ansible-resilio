@@ -1,2 +1,5 @@
 ---
 # defaults file for ansible_resilio
+
+# posible values: "present", "absent", and "latest"
+final_state: "latest"

@@ -1,3 +1,6 @@
 ---
 # tasks file for ansible_resilio
 - include: set_facts.yml
+
+- include: install.yml
+  when: supported_family

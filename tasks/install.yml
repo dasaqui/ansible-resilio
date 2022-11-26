@@ -1,0 +1,4 @@
+---
+# Determine the correct install method
+- include: install_apt.yml
+  when: ansible_pkg_mgr == "apt"

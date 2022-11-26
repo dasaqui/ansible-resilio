@@ -1,0 +1,32 @@
+---
+# Install ussing apt
+- name: Add resilio key
+  ansible.builtin.get_url:
+    url: https://linux-packages.resilio.com/resilio-sync/key.asc
+    dest: /etc/apt/trusted.gpg.d/resilio.asc
+
+- name: Add resilio sync repository
+  ansible.builtin.apt_repository:
+    repo: deb [signed-by=/etc/apt/trusted.gpg.d/resilio.asc] http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free
+    state: present
+    filename: resilio-sync
+
+- name: Add ARMv6 architecture
+  ansible.builtin.shell:
+    cmd: sudo dpkg --add-architecture armel
+  when: 
+    armv6_cpu
+
+- name: Install resilio on armv6 cpu
+  ansible.builtin.apt:
+    name: resilio-sync:armel
+    update_cache: true
+    state: "{{ final_state }}"
+  when: armv6_cpu
+
+- name: Install resilio on non armv6 cpu
+  ansible.builtin.apt:
+    name: resilio-sync
+    update_cache: true
+    state: "{{ final_state }}"
+  when: not armv6_cpu 
