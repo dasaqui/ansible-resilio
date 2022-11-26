@@ -11,6 +11,14 @@ listening_port: 0
 download_limit: 0
 upload_limit: 0
 
+# Users and groups
+users_in_rslsync_group: []
+user_groups_for_rslsync: []
+# Example:
+# users_in_rslsync_group:
+#   - user1
+#   - user2
+
 # tipe of server (headless) to implement later: webui
 server_type: "headless"
 

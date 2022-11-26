@@ -1,4 +1,27 @@
 ---
 # Determine the correct config method
+- name: Get list of groups
+  ansible.builtin.getent:
+    database: group
+- name: Config groups for user rslsync
+  ansible.builtin.user:
+    name: rslsync
+    groups: "{{ item }}"
+    append: true
+  loop: "{{ user_groups_for_rslsync | list }}"
+  when: item in ansible_facts.getent_group
+
+- name: Get list of users
+  ansible.builtin.getent:
+    database: passwd
+- name: Config users in rslsync group
+  ansible.builtin.user:
+    name: "{{ item }}"
+    groups: rslsync
+    append: true
+  loop: "{{ users_in_rslsync_group | list }}"
+  when: item in ansible_facts.getent_passwd
+
+
 - include: config_headless.yml
   when: server_type == "headless"
