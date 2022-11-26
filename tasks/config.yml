@@ -3,7 +3,7 @@
 - name: Get list of groups
   ansible.builtin.getent:
     database: group
-    
+
 - name: Config groups for user rslsync
   ansible.builtin.user:
     name: rslsync
@@ -25,5 +25,5 @@
   when: item in ansible_facts.getent_passwd
 
 
-- include: config_headless.yml
+- include_tasks: config_headless.yml
   when: server_type == "headless"

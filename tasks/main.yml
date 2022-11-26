@@ -1,9 +1,9 @@
 ---
 # tasks file for ansible_resilio
-- include: set_facts.yml
+- include_tasks: set_facts.yml
 
-- include: install.yml
+- include_tasks: install.yml
   when: supported_family
 
-- include: config.yml
+- include_tasks: config.yml
   when: final_state != "absent"
