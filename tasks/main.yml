@@ -4,3 +4,6 @@
 
 - include: install.yml
   when: supported_family
+
+- include: config.yml
+  when: final_state != "absent"

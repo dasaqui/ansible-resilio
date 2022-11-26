@@ -1,0 +1,4 @@
+---
+# Determine the correct config method
+- include: config_headless.yml
+  when: server_type == "headless"

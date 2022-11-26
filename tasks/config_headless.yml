@@ -1,0 +1,14 @@
+---
+# Execute required configurations to headless server
+- name: copy config files
+  ansible.builtin.template:
+    src: "headless.json.j2"
+    dest: "/etc/resilio-sync/config.json"
+    owner: root
+    group: root
+
+- name: restart resilio service
+  ansible.builtin.service:
+    name: resilio-sync
+    state: restarted
+    enabled: yes
