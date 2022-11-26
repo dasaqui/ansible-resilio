@@ -1,0 +1,28 @@
+---
+# OS family dependant facts like installer method
+- name: OS printing
+  debug:
+    msg: "{{ ansible_os_family }} like OS detected ({{ ansible_distribution }})"
+
+- name: setting facts for Debian like systems
+  set_fact:
+    supported_family: true
+  when: >
+        ansible_os_family == "Debian"
+
+# Architecture dependant facts
+- name: architecture 
+  debug:
+    msg: "{{ ansible_architecture }} cpu detected"
+
+- name: facts for raspberry pi v1 and zero v1
+  set_fact:
+    armv6_cpu: true
+  when: >
+        ansible_architecture == "armv6l"
+
+- name: facts for non armv6 architectures
+  set_fact:
+    armv6_cpu: false
+  when: >
+        ansible_architecture != "armv6l"
