@@ -12,3 +12,10 @@
     name: resilio-sync
     state: restarted
     enabled: yes
+
+- name: config owners for specified folders
+  ansible.builtin.file:
+    path: "{{ item.dir }}"
+    group: "{{ item.group }}"
+    mode: "{{ item.mode }}"
+  loop: "{{ folder_owner_n_mode | list}}"

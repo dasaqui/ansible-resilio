@@ -14,6 +14,7 @@ upload_limit: 0
 # tipe of server (headless) to implement later: webui
 server_type: "headless"
 
+# For headless config ---------------------------------------------------------------------
 shared_folders: []
 #  Example........
 #
@@ -22,6 +23,14 @@ shared_folders: []
 #     dir: "/path/to/your/shared/folder"
 #     use_relay_server: true, //  use relay server when direct connection fails
 #     use_sync_trash: true, // enable SyncArchive to store files deleted on remote devices
-#     folder_group: "rslsync" // the group to use in the root of current folder
 #   - secret: "secret2"
 #   ... use as many secrets as you need and remember to remove the brackets above
+
+# Set folders owner
+folder_owner_n_mode: []
+# Example.........
+#
+# folder_owner_n_mode:
+#   - dir: "some/path"
+#     owner: "owner"
+#     mode: 660
