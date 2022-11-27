@@ -26,10 +26,10 @@
   when: prev_sum.stat.checksum != new_sum.stat.checksum
   become: true
 
-- name: config owners for specified folders
+- name: config ownership for specified folders
   ansible.builtin.file:
     path: "{{ item.dir }}"
     group: "{{ item.group }}"
     mode: "{{ item.mode }}"
-  loop: "{{ folder_owner_and_mode | list}}"
+  loop: "{{ folder_group_and_mode | list}}"
   become: true

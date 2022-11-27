@@ -34,11 +34,11 @@ shared_folders: []
 #   - secret: "secret2"
 #   ... use as many secrets as you need and remember to remove the brackets above
 
-# Set folders owner
-folder_owner_and_mode: []
+# Set folders ownership
+folder_group_and_mode: []
 # Example.........
 #
-# folder_owner_n_mode:
+# folder_group_n_mode:
 #   - dir: "some/path"
-#     owner: "owner"
+#     group: "group" # The owner keeps untouched
 #     mode: 660
